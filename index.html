@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo local storage</title>
+</head>
+<body>
+    <fieldset>
+        <legend>
+            Insert data
+        </legend>
+        <input id="intKey" placeholder="enter key"/>
+        <input id="intValue" placeholder="enter value"/>
+        <button id="insertBtn">Insert</button>
+    </fieldset>
+    <fieldset>
+        <legend>
+            Output
+        </legend>
+        <div id="output"></div>
+
+    </fieldset>
+
+</body>
+</html>
+
+<script type="text/javascript" >
+    
+const inputKey = document.getElementById("intKey");
+const inputValue = document.getElementById("intValue");
+const insertBtn = document.getElementById("insertBtn");
+const output = document.getElementById("output");
+
+insertBtn.addEventListener("click", showOutput);
+
+function showOutput(){
+    
+    const key = inputKey.value;
+    const value = inputValue.value;
+    
+
+    if(key&&value){
+        localStorage.setItem(key, value);   
+        console.log(localStorage); 
+        location.reload();
+    }
+  
+};
+ 
+for(let i = 0; i < localStorage.length; i++){
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+
+            output.innerHTML += `${key} : ${value}<br/>` ;
+    }
+
+</script>
